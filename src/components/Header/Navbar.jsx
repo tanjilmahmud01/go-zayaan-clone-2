@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import logo from "../../assets/go-zayaan-logo.svg";
 import bdicon from "../../assets/bangladesh-icon.png";
 import pkicon from "../../assets/pakistan-icon.png";
 import arrowDownIcon from "../../assets/arrow-down-icon.svg";
 
-const Navbar = () => {
+const Navbar = ({ openRegionandCurrency }) => {
   return (
     <nav className="absolute top-0">
       <div className="border-2 border-blue-700 w-[1140px] h-[78px] p-[14px] flex justify-between">
@@ -15,10 +15,10 @@ const Navbar = () => {
 
         <div className="w-[200px] h-[48px] border border-yellow-400 flex justify-between ">
           {/* dropdown */}
-          <button>
+          <button onClick={openRegionandCurrency}>
             <div className="w-[85px] h-[28px] gap-2 flex items-center border border-green-400">
               <img className="size-[24px]" src={bdicon} alt="" />
-              <span>BDT</span>
+              <span className="font-semibold text-gray-500">BDT</span>
               <img src={arrowDownIcon} alt="" />
             </div>
           </button>
