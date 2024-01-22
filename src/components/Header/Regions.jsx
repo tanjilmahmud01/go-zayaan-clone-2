@@ -1,15 +1,16 @@
 import React from "react";
-import bdicon from "../../assets/bangladesh-icon.png";
-import pkicon from "../../assets/pakistan-icon.png";
+
 import { MdCheck } from "react-icons/md";
 
-const Regions = ({ regionData }) => {
-  //dummy region data
-
+const Regions = ({ regionData, onSelectRegion }) => {
   return (
     <div>
       {regionData.map((region) => (
-        <div key={region.regionId} className="mt-4 mb-4">
+        <div
+          onClick={() => onSelectRegion(region.regionId)}
+          key={region.regionId}
+          className="mt-4 mb-4"
+        >
           <button>
             <div className="flex gap-4 items-center">
               <div className="flex gap-3 items-center">
