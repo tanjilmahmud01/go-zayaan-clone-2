@@ -2,12 +2,15 @@ import React from "react";
 
 import { MdCheck } from "react-icons/md";
 
-const Regions = ({ regionData, onSelectRegion }) => {
+const Regions = ({ regionData, onSelectRegion, setSelectedRegionState }) => {
   return (
     <div>
       {regionData.map((region) => (
         <div
-          onClick={() => onSelectRegion(region.regionId)}
+          onClick={() => {
+            setSelectedRegionState(region);
+            onSelectRegion(region);
+          }}
           key={region.regionId}
           className="mt-4 mb-4"
         >

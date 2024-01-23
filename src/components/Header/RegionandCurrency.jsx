@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Regions from "./Regions";
 import bdicon from "../../assets/bangladesh-icon.png";
 import pkicon from "../../assets/pakistan-icon.png";
+import Currency from "./Currency";
 
-const RegionandCurrency = () => {
+const RegionandCurrency = ({ closeRegionandCurrency }) => {
+  //dummy region data
   let regionsInfo = [
     {
       regionName: "Bangladesh",
@@ -16,7 +18,7 @@ const RegionandCurrency = () => {
       regionName: "Pakistan",
       regionId: 2,
       regionFlag: pkicon,
-      regionCurrency: "BDT",
+      regionCurrency: "PKR",
       regionIsSelected: false,
     },
     {
@@ -28,7 +30,8 @@ const RegionandCurrency = () => {
     },
   ];
 
-  const [selectedRegion, setSelectedRegion] = useState({
+  //states
+  const [selectedRegionState, setSelectedRegionState] = useState({
     regionName: "Bangladesh",
     regionId: 1,
     regionFlag: bdicon,
@@ -38,46 +41,62 @@ const RegionandCurrency = () => {
 
   const [regionData, setRegionData] = useState(regionsInfo);
 
-  const handleSelectRegion = (onSelectedRegionId) => {
-    let selectedRegion = regionData.find(
-      (region) => region.regionId === onSelectedRegionId
-    );
+  //handlers
+  const handleSelectRegion = (selectedRegion) => {
+    // make the selected region's regionIsSelected property as 'true'
 
     selectedRegion.regionIsSelected = true;
 
-    let newRegionData = regionData.filter(
-      (region) => region.regionId !== onSelectedRegionId
-    );
+    let copyRegionsInfo = regionsInfo.map((region) => {
+      if (region.regionId === selectedRegion.regionId) {
+        return selectedRegion;
+      } else {
+        return { ...region, regionIsSelected: false };
+      }
+    });
 
-    for (let i = 0; i < newRegionData.length; i++) {
-      newRegionData[i].regionIsSelected = false;
-    }
+    setRegionData(copyRegionsInfo);
 
-    regionsInfo = [selectedRegion, ...newRegionData];
-    setRegionData(regionsInfo);
-    console.log("selectedRegion: ", regionData);
+    // console.log("Selected Region State: ", selectedRegionState);
   };
 
-  //dummy region data
-
   return (
-    <div className="absolute top-20 right-[400px] w-[300px] h-[300px] p-[15px] rounded-lg border-2 border-red-600 bg-white">
-      <div>
-        <div>
-          <div>
+    <div className="absolute top-20 right-[400px] w-[350px] h-[250px] p-[15px] rounded-lg  bg-white">
+      <div className="">
+        <div className="flex gap-6 ">
+          <div className=" w-[160px]">
             <span className="font-bold text-[#1c3c6b]">Region</span>
 
             {/* country component*/}
             <Regions
               regionData={regionData}
               onSelectRegion={handleSelectRegion}
+              setSelectedRegionState={setSelectedRegionState}
             />
           </div>
 
-          {/* divider */}
-          <div className="inline-block h-28 min-h-[1em] w-[0.1px] self-stretch bg-gray-600/35 "></div>
+          <div className=" flex justify-start gap-10">
+            {/* divider */}
+            <div className="inline-block h-[160px] min-h-[1em] w-[0.1px] self-stretch bg-gray-600/35 "></div>
+
+            <div>
+              <span className="font-bold text-[#1c3c6b]">Currency</span>
+
+              {/* currency component*/}
+              <Currency selectedRegionState={selectedRegionState} />
+            </div>
+          </div>
         </div>
       </div>
+
+      <button
+        onClick={() => closeRegionandCurrency(selectedRegionState)}
+        className="absolute bottom-10 right-6 "
+      >
+        <div className="w-[70px] h-[40px] bg-[#fccd03] flex items-center justify-center rounded-lg hover:shadow-2xl hover: shadow-yellow-300 transition-all duration-300">
+          <span className="font-bold">Apply</span>
+        </div>
+      </button>
     </div>
   );
 };
