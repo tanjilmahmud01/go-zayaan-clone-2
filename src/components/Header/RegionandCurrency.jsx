@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Regions from "./Regions";
 import bdicon from "../../assets/bangladesh-icon.png";
 import pkicon from "../../assets/pakistan-icon.png";
+import inicon from "../../assets/india-icon.png";
 import Currency from "./Currency";
 
 const RegionandCurrency = ({ closeRegionandCurrency }) => {
@@ -24,7 +25,7 @@ const RegionandCurrency = ({ closeRegionandCurrency }) => {
     {
       regionName: "India",
       regionId: 3,
-      regionFlag: pkicon,
+      regionFlag: inicon,
       regionCurrency: "INR",
       regionIsSelected: false,
     },
@@ -61,7 +62,7 @@ const RegionandCurrency = ({ closeRegionandCurrency }) => {
   };
 
   return (
-    <div className="absolute top-20 right-[400px] w-[350px] h-[250px] p-[15px] rounded-lg  bg-white">
+    <div className="absolute top-20 right-[400px] w-[350px] h-[215px] p-[15px] rounded-lg  bg-white">
       <div className="">
         <div className="flex gap-6 ">
           <div className=" w-[160px]">

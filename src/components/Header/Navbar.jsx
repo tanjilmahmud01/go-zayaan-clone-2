@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import logo from "../../assets/go-zayaan-logo.svg";
 import bdicon from "../../assets/bangladesh-icon.png";
 import pkicon from "../../assets/pakistan-icon.png";
+import inicon from "../../assets/india-icon.png";
 import arrowDownIcon from "../../assets/arrow-down-icon.svg";
 
 const Navbar = ({ openRegionandCurrency, selectedRegionandCurrency }) => {
