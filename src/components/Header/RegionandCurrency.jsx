@@ -60,7 +60,7 @@ const RegionandCurrency = ({ closeRegionandCurrency }) => {
   };
 
   return (
-    <div className="absolute top-20 right-[345px] z-[10] w-[330px] h-[215px] p-[15px] rounded-lg  bg-white">
+    <div className="absolute top-20 right-[345px] z-[30] w-[330px] h-[215px] p-[15px] rounded-lg  bg-white">
       <div className="">
         <div className="flex gap-6 ">
           <div className=" w-[180px]">
