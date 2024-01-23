@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Regions from "./Regions";
 import bdicon from "../../assets/bangladesh-icon.png";
 import pkicon from "../../assets/pakistan-icon.png";
+import inicon from "../../assets/india-icon.png";
 import Currency from "./Currency";
 
 const RegionandCurrency = ({ closeRegionandCurrency }) => {
@@ -24,7 +25,7 @@ const RegionandCurrency = ({ closeRegionandCurrency }) => {
     {
       regionName: "India",
       regionId: 3,
-      regionFlag: pkicon,
+      regionFlag: inicon,
       regionCurrency: "INR",
       regionIsSelected: false,
     },
@@ -56,15 +57,13 @@ const RegionandCurrency = ({ closeRegionandCurrency }) => {
     });
 
     setRegionData(copyRegionsInfo);
-
-    // console.log("Selected Region State: ", selectedRegionState);
   };
 
   return (
-    <div className="absolute top-20 right-[400px] w-[350px] h-[250px] p-[15px] rounded-lg  bg-white">
+    <div className="absolute top-20 right-[345px] z-[10] w-[330px] h-[215px] p-[15px] rounded-lg  bg-white">
       <div className="">
         <div className="flex gap-6 ">
-          <div className=" w-[160px]">
+          <div className=" w-[180px]">
             <span className="font-bold text-[#1c3c6b]">Region</span>
 
             {/* country component*/}
@@ -79,7 +78,7 @@ const RegionandCurrency = ({ closeRegionandCurrency }) => {
             {/* divider */}
             <div className="inline-block h-[160px] min-h-[1em] w-[0.1px] self-stretch bg-gray-600/35 "></div>
 
-            <div>
+            <div className="">
               <span className="font-bold text-[#1c3c6b]">Currency</span>
 
               {/* currency component*/}
@@ -89,14 +88,16 @@ const RegionandCurrency = ({ closeRegionandCurrency }) => {
         </div>
       </div>
 
-      <button
-        onClick={() => closeRegionandCurrency(selectedRegionState)}
-        className="absolute bottom-10 right-6 "
-      >
-        <div className="w-[70px] h-[40px] bg-[#fccd03] flex items-center justify-center rounded-lg hover:shadow-2xl hover: shadow-yellow-300 transition-all duration-300">
-          <span className="font-bold">Apply</span>
-        </div>
-      </button>
+      <div>
+        <button
+          onClick={() => closeRegionandCurrency(selectedRegionState)}
+          className="absolute bottom-2 right-4 "
+        >
+          <div className="w-[60px] h-[35px] bg-[#fccd03] flex items-center justify-center rounded-lg hover:shadow-2xl hover: shadow-yellow-300 transition-all duration-300">
+            <span className="font-bold">Apply</span>
+          </div>
+        </button>
+      </div>
     </div>
   );
 };
